@@ -1,9 +1,6 @@
 # Import classes from your brand new package
 from analyser.TextFileAnalyser import TextFileAnalyser
-from analyser.WordCountStatistic import WordCountStatistic
-from analyser.LineCountStatistic import LineCountStatistic
-from analyser.AvgLettersPerWordStatistic import AvgLettersPerWordStatistic
-from analyser.MostCommonLetterStatistic import MostCommonLetterStatistic
+from analyser.Statistic import *
 
 # Setup statistics to gather
 statistics = [WordCountStatistic(),
