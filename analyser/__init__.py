@@ -1,1 +1,1 @@
-from analyser import TextFileAnalyser
+from analyser import TextFileAnalyser, Statistic
