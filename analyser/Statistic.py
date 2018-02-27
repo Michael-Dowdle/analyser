@@ -3,7 +3,7 @@ import collections
 import re
 
 
-class _StatisticBase(ABC):
+class __StatisticBase(ABC):
     def __init__(self):
         self._result = ""
         super().__init__()
@@ -28,7 +28,7 @@ class _StatisticBase(ABC):
         return self._result
 
 
-class WordCountStatistic(_StatisticBase):
+class WordCountStatistic(__StatisticBase):
     def __init__(self):
         self.__wordCount = 0
         super().__init__()
@@ -40,7 +40,7 @@ class WordCountStatistic(_StatisticBase):
         self.result = self.__wordCount
 
 
-class LineCountStatistic(_StatisticBase):
+class LineCountStatistic(__StatisticBase):
     def __init__(self):
         self.__lineCount = 0
         super().__init__()
@@ -52,7 +52,7 @@ class LineCountStatistic(_StatisticBase):
         self.result = self.__lineCount
 
 
-class AvgLettersPerWordStatistic(_StatisticBase):
+class AvgLettersPerWordStatistic(__StatisticBase):
     def __init__(self):
         self.__wordCount = 0
         self.__totalWordLengths = 0
@@ -67,7 +67,7 @@ class AvgLettersPerWordStatistic(_StatisticBase):
         self.result = round(self.__totalWordLengths / self.__wordCount, 1)
 
 
-class MostCommonLetterStatistic(_StatisticBase):
+class MostCommonLetterStatistic(__StatisticBase):
     def __init__(self):
         self.__letterFrequencyDict = collections.defaultdict(int)
         super().__init__()

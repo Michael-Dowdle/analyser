@@ -2,6 +2,7 @@
 from analyser.TextFileAnalyser import TextFileAnalyser
 from analyser.Statistic import *
 
+
 # Setup statistics to gather
 statistics = [WordCountStatistic(),
               LineCountStatistic(),
