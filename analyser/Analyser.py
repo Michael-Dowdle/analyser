@@ -1,5 +1,15 @@
-class TextFileAnalyser:
-    def __init__(self, statistics):
+from analyser.Statistic import *
+
+
+# Setup statistics to gather
+temp_stats = [WordCountStatistic(),
+              LineCountStatistic(),
+              AvgLettersPerWordStatistic(),
+              MostCommonLetterStatistic()]
+
+
+class Analyser:
+    def __init__(self, statistics=temp_stats):
         self.__results = []
         self.__statistics = statistics
 
@@ -15,3 +25,9 @@ class TextFileAnalyser:
     def print_statistics(self):
         for result in self.__results:
             print(result)
+
+
+class TextFileAnalyser(Analyser):
+    def analyse(self, file):
+        with open(file, 'r') as data:
+            super().analyse(data)

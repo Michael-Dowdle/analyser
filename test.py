@@ -1,21 +1,11 @@
-# Import classes from your brand new package
-from analyser.Analyser import *
-from analyser.Statistic import *
-
-
-# Setup statistics to gather
-statistics = [WordCountStatistic(),
-              LineCountStatistic(),
-              AvgLettersPerWordStatistic(),
-              MostCommonLetterStatistic()]
+# Import class
+from analyser import TextFileAnalyser
 
 # Setup analyser
-analyser = TextFileAnalyser(statistics)
+analyser = TextFileAnalyser()
 
-# Setup data handler
-with open('file.txt', 'r') as data:
-    # Run analysis and gather results
-    analyser.analyse(data)
+# Run analysis and gather results
+analyser.analyse('file.txt')
 
-    # display statistics results
-    analyser.print_statistics()
+# display statistics results
+analyser.print_statistics()

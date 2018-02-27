@@ -1,7 +1,5 @@
-from analyser.Analyser import *
-from analyser.Statistic import *
+from analyser import *
 import argparse
-
 
 parser = argparse.ArgumentParser(description='Analyse text file and produce statistics.')
 parser.add_argument('file', type=str, help='path of text file to analyse')
@@ -15,12 +13,10 @@ statistics = [WordCountStatistic(),
               MostCommonLetterStatistic()]
 
 # Setup analyser
-analyser = TextFileAnalyser(statistics)
+text_analyser = TextFileAnalyser(statistics)
 
-# Setup data handler
-with open(args.file, 'r') as data:
-    # Run analysis and gather results
-    analyser.analyse(data)
+# Run analysis and gather results
+text_analyser.analyse(args.file)
 
-    # display statistics results
-    analyser.print_statistics()
+# display statistics results
+text_analyser.print_statistics()
