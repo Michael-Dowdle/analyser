@@ -1,5 +1,5 @@
 # Import classes from your brand new package
-from analyser.TextFileAnalyser import TextFileAnalyser
+from analyser.Analyser import *
 from analyser.Statistic import *
 
 

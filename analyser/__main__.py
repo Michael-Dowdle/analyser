@@ -1,4 +1,4 @@
-from analyser.TextFileAnalyser import *
+from analyser.Analyser import *
 from analyser.Statistic import *
 import argparse
 
@@ -18,7 +18,7 @@ statistics = [WordCountStatistic(),
 analyser = TextFileAnalyser(statistics)
 
 # Setup data handler
-with open('file.txt', 'r') as data:
+with open(args.file, 'r') as data:
     # Run analysis and gather results
     analyser.analyse(data)
 
