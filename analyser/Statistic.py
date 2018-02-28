@@ -64,7 +64,10 @@ class AvgLettersPerWordStatistic(__StatisticBase):
             self.__totalWordLengths += len(word)
 
     def calculate(self):
-        self.result = round(self.__totalWordLengths / self.__wordCount, 1)
+        if self.__wordCount == 0:
+            self.result = 0.0
+        else:
+            self.result = round(self.__totalWordLengths / self.__wordCount, 1)
 
 
 class MostCommonLetterStatistic(__StatisticBase):
@@ -78,6 +81,9 @@ class MostCommonLetterStatistic(__StatisticBase):
                 self.__letterFrequencyDict[char.lower()] += 1
 
     def calculate(self):
-        self.result = sorted(self.__letterFrequencyDict,
-                             key=self.__letterFrequencyDict.__getitem__,
-                             reverse=True)[0]
+        if len(self.__letterFrequencyDict) == 0:
+            self.result = ''
+        else:
+            self.result = sorted(self.__letterFrequencyDict,
+                                 key=self.__letterFrequencyDict.__getitem__,
+                                 reverse=True)[0]
