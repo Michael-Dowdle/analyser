@@ -8,26 +8,30 @@ temp_stats = [WordCountStatistic(),
               MostCommonLetterStatistic()]
 
 
-class Analyser:
+class __Analyser:
     def __init__(self, statistics=temp_stats):
-        self.__results = []
+        self.__results = {}
         self.__statistics = statistics
 
-    def analyse(self, data):
+    @staticmethod
+    def __calculated_result(stat):
+        stat.calculate()
+        return stat.get_result()
+
+    def _analyse(self, data):
         for line in data:
             for stat in self.__statistics:
                 stat.process_line(line)
 
-        for stat in self.__statistics:
-            stat.calculate()
-            self.__results.append(stat.get_result())
+        self.__results = {stat.description: self.__calculated_result(stat)
+                          for stat in self.__statistics}
 
     def print_statistics(self):
-        for result in self.__results:
-            print(result)
+        for desc, res in self.__results.items():
+            print("{:<35s}: {}".format(desc, res))
 
 
-class TextFileAnalyser(Analyser):
+class TextFileAnalyser(__Analyser):
     def analyse(self, file):
         with open(file, 'r') as data:
-            super().analyse(data)
+            super()._analyse(data)

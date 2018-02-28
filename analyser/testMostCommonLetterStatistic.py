@@ -1,10 +1,10 @@
 import unittest
-import analyser
+from analyser import MostCommonLetterStatistic
 
 
 class TestMostCommonLetterStatistic(unittest.TestCase):
     def setUp(self):
-        self.__stat = analyser.MostCommonLetterStatistic()
+        self.__stat = MostCommonLetterStatistic()
 
     def test_no_line(self):
         self.__stat.calculate()

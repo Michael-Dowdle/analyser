@@ -1,10 +1,10 @@
 import unittest
-import analyser
+from analyser import LineCountStatistic
 
 
 class TestLineCountStatistic(unittest.TestCase):
     def setUp(self):
-        self.__stat = analyser.LineCountStatistic()
+        self.__stat = LineCountStatistic()
 
     def test_no_line(self):
         self.__stat.calculate()

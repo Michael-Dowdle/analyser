@@ -4,9 +4,14 @@ import re
 
 
 class __StatisticBase(ABC):
-    def __init__(self):
+    def __init__(self, desc):
+        self.__description = desc
         self._result = ""
         super().__init__()
+
+    @property
+    def description(self):
+        return self.__description
 
     @property
     def result(self):
@@ -31,7 +36,7 @@ class __StatisticBase(ABC):
 class WordCountStatistic(__StatisticBase):
     def __init__(self):
         self.__wordCount = 0
-        super().__init__()
+        super().__init__("whitespace delimited word count")
 
     def process_line(self, line):
         self.__wordCount += len(line.split())
@@ -43,7 +48,7 @@ class WordCountStatistic(__StatisticBase):
 class LineCountStatistic(__StatisticBase):
     def __init__(self):
         self.__lineCount = 0
-        super().__init__()
+        super().__init__("line count")
 
     def process_line(self, *_):
         self.__lineCount += 1
@@ -56,7 +61,7 @@ class AvgLettersPerWordStatistic(__StatisticBase):
     def __init__(self):
         self.__wordCount = 0
         self.__totalWordLengths = 0
-        super().__init__()
+        super().__init__("average number of letters per word")
 
     def process_line(self, line):
         for word in line.split():
@@ -73,7 +78,7 @@ class AvgLettersPerWordStatistic(__StatisticBase):
 class MostCommonLetterStatistic(__StatisticBase):
     def __init__(self):
         self.__letterFrequencyDict = collections.defaultdict(int)
-        super().__init__()
+        super().__init__("most common letter")
 
     def process_line(self, line):
         for char in line:

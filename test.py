@@ -1,11 +1,11 @@
-# Import class
-from analyser import TextFileAnalyser
+import unittest
+import analyser
 
 # Setup analyser
-analyser = TextFileAnalyser()
+tfa = analyser.TextFileAnalyser()
 
 # Run analysis and gather results
-analyser.analyse('file.txt')
+tfa.analyse('file.txt')
 
 # display statistics results
-analyser.print_statistics()
+tfa.print_statistics()

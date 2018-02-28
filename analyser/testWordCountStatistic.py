@@ -1,10 +1,10 @@
 import unittest
-import analyser
+from analyser import WordCountStatistic
 
 
 class TestWordCountStatistic(unittest.TestCase):
     def setUp(self):
-        self.__stat = analyser.WordCountStatistic()
+        self.__stat = WordCountStatistic()
 
     def test_no_line(self):
         self.__stat.calculate()

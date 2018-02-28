@@ -1,10 +1,10 @@
 import unittest
-import analyser
+from analyser import AvgLettersPerWordStatistic
 
 
 class TestAvgLettersPerWordStatistic(unittest.TestCase):
     def setUp(self):
-        self.__stat = analyser.AvgLettersPerWordStatistic()
+        self.__stat = AvgLettersPerWordStatistic()
 
     def test_no_line(self):
         self.__stat.calculate()
