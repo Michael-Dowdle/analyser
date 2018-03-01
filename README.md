@@ -51,3 +51,15 @@ argument to see the helper, see example:
 ```
 #> python3.6 -m analyser -h
 ```
+
+## Future Optimisations
+
+- Dynamic statistic discovery for default if not provided
+
+- Data handler for other data sources
+
+- Install/deploy mechanism
+
+- Threaded processing of data, with relevant locking to allow adhoc results so far requests
+
+- Ability for user to define new statistics to capture at run time
