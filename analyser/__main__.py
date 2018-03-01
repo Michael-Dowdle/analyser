@@ -6,17 +6,11 @@ parser.add_argument('file', type=str, help='path of text file to analyse')
 
 args = parser.parse_args()
 
-# Setup statistics to gather
-statistics = [WordCountStatistic(),
-              LineCountStatistic(),
-              AvgLettersPerWordStatistic(),
-              MostCommonLetterStatistic()]
-
 # Setup analyser
-text_analyser = TextFileAnalyser(statistics)
+text_analyser = TextFileAnalyser()
 
 # Run analysis and gather results
 text_analyser.analyse(args.file)
 
 # display statistics results
-text_analyser.print_statistics()
+text_analyser.print_results()

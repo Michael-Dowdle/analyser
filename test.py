@@ -8,4 +8,4 @@ tfa = analyser.TextFileAnalyser()
 tfa.analyse('file.txt')
 
 # display statistics results
-tfa.print_statistics()
+tfa.print_results()
