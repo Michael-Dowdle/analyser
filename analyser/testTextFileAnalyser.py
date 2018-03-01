@@ -4,7 +4,11 @@ from analyser import *
 
 class TestTextFileAnalyser(unittest.TestCase):
     def setUp(self):
-        self.__analyser = TextFileAnalyser()
+        stats = [WordCountStatistic(),
+                 LineCountStatistic(),
+                 AvgLettersPerWordStatistic(),
+                 MostCommonLetterStatistic()]
+        self.__analyser = TextFileAnalyser(stats)
 
     def test_analyser(self):
         self.__analyser.analyse('file.txt')

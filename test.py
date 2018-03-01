@@ -1,8 +1,13 @@
-import unittest
-import analyser
+from analyser import *
+
+# Setup statistics
+stats = [WordCountStatistic(),
+         LineCountStatistic(),
+         AvgLettersPerWordStatistic(),
+         MostCommonLetterStatistic()]
 
 # Setup analyser
-tfa = analyser.TextFileAnalyser()
+tfa = TextFileAnalyser(stats)
 
 # Run analysis and gather results
 tfa.analyse('file.txt')

@@ -1,12 +1,12 @@
+"""Module for defining statistic types and how to calculate them."""
 from abc import ABC, abstractmethod
 import collections
 import re
 
 
 class __StatisticBase(ABC):
-    """
+    """Private base class to use for creating statistics."""
 
-    """
     def __init__(self, desc):
         """
 
@@ -32,15 +32,6 @@ class __StatisticBase(ABC):
         """
         return self._result
 
-    @result.setter
-    def result(self, value):
-        """
-
-        :param value:
-        :return:
-        """
-        self._result = value
-
     @abstractmethod
     def process_line(self, line):
         """
@@ -57,13 +48,6 @@ class __StatisticBase(ABC):
         :return:
         """
         pass
-
-    def get_result(self):
-        """
-
-        :return:
-        """
-        return self._result
 
 
 class WordCountStatistic(__StatisticBase):
@@ -83,7 +67,7 @@ class WordCountStatistic(__StatisticBase):
         self.__wordCount += len(line.split())
 
     def calculate(self):
-        self.result = self.__wordCount
+        self._result = self.__wordCount
 
 
 class LineCountStatistic(__StatisticBase):
@@ -110,7 +94,7 @@ class LineCountStatistic(__StatisticBase):
 
         :return:
         """
-        self.result = self.__lineCount
+        self._result = self.__lineCount
 
 
 class AvgLettersPerWordStatistic(__StatisticBase):
@@ -141,9 +125,9 @@ class AvgLettersPerWordStatistic(__StatisticBase):
         :return:
         """
         if self.__wordCount == 0:
-            self.result = 0.0
+            self._result = 0.0
         else:
-            self.result = round(self.__totalWordLengths / self.__wordCount, 1)
+            self._result = round(self.__totalWordLengths / self.__wordCount, 1)
 
 
 class MostCommonLetterStatistic(__StatisticBase):
@@ -173,8 +157,8 @@ class MostCommonLetterStatistic(__StatisticBase):
         :return:
         """
         if len(self.__letterFrequencyDict) == 0:
-            self.result = ''
+            self._result = ''
         else:
-            self.result = sorted(self.__letterFrequencyDict,
+            self._result = sorted(self.__letterFrequencyDict,
                                  key=self.__letterFrequencyDict.__getitem__,
                                  reverse=True)[0]
