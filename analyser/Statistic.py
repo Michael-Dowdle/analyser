@@ -1,6 +1,7 @@
 """Module for defining statistic types and how to calculate them."""
 from abc import ABC, abstractmethod
 import collections
+import logging
 import re
 
 
@@ -73,6 +74,7 @@ class WordCountStatistic(__StatisticBase):
 
         :param line:    the line of data to be processed.
         """
+        logging.debug("processing data line")
         self.__wordCount += len(line.split())
 
     def calculate(self):
@@ -80,6 +82,7 @@ class WordCountStatistic(__StatisticBase):
         Method to calculate statistic result, setting it to the
         total word count attribute value.
         """
+        logging.debug("calculating result")
         self._result = self.__wordCount
 
 
@@ -101,6 +104,7 @@ class LineCountStatistic(__StatisticBase):
 
         :param line:    the line of data to be processed.
         """
+        logging.debug("processing data line")
         self.__lineCount += 1
 
     def calculate(self):
@@ -108,6 +112,7 @@ class LineCountStatistic(__StatisticBase):
         Method to calculate statistic result, setting it to the
         total line count attribute value.
         """
+        logging.debug("calculating result")
         self._result = self.__lineCount
 
 
@@ -133,6 +138,7 @@ class AvgLettersPerWordStatistic(__StatisticBase):
 
         :param line:    the line of data to be processed.
         """
+        logging.debug("processing data line")
         for word in line.split():
             self.__wordCount += 1
             self.__totalWordLengths += len(word)
@@ -142,6 +148,7 @@ class AvgLettersPerWordStatistic(__StatisticBase):
         Method to calculate statistic result, setting it to the
         total word lengths divided by the total word count.
         """
+        logging.debug("calculating result")
         if self.__wordCount == 0:
             self._result = 0.0
         else:
@@ -172,6 +179,7 @@ class MostCommonLetterStatistic(__StatisticBase):
 
         :param line:    the line of data to be processed.
         """
+        logging.debug("processing data line")
         for char in line:
             if re.compile('[A-Za-z]').match(char):
                 self.__letterFrequencyDict[char.lower()] += 1
@@ -183,6 +191,7 @@ class MostCommonLetterStatistic(__StatisticBase):
         order, and then getting the key for the first entry in that
         sorted dictionary.
         """
+        logging.debug("calculating result")
         if len(self.__letterFrequencyDict) == 0:
             self._result = ''
         else:

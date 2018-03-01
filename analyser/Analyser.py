@@ -1,5 +1,5 @@
 """Module for analysing data and capturing results."""
-
+import logging
 
 class Analyser:
     """Class for analysing data from arbitrary source."""
@@ -54,10 +54,12 @@ class Analyser:
 
         :param data:    data to be analysed.
         """
+        logging.debug("analysing data")
         for line in data:
             for stat in self.__statistics:
                 stat.process_line(line)
 
+        logging.debug("calculating statistic results")
         self.__results = {stat.description: self.__calculated_result(stat)
                           for stat in self.__statistics}
 
@@ -72,6 +74,7 @@ class Analyser:
             statistic result. e.g.
                 <statistic description>            : <result>
         """
+        logging.debug("printing statistic results")
         for desc, res in self.results.items():
             print("{:<35s}: {}".format(desc, res))
 
@@ -82,6 +85,9 @@ class TextFileAnalyser(Analyser):
     def analyse(self, file):
         """
         Overloaded method for analysing data from text file.
+        Opens text file with read permissions using with statement,
+        and calling on the base class analyse, passing the data
+        as an argument.
 
         :param file:    path of text file to open and analyse.
         """
