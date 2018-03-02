@@ -1,6 +1,8 @@
 # Analyser
 text file analyser for gathering statistics about data in a text file.
 
+Task 20150701
+
 ## Getting Started
 
 There is no setup.py available for installing this package yet.
